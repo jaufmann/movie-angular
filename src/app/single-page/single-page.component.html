@@ -1,0 +1,23 @@
+<div class="card" style="{{this.backdrop}}">
+    <div class="picture">
+        <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/1sc39exU1GS3niZps9yJ3xTkBMf.jpg">
+    </div>
+    <div class="details">
+      <div>
+        <h1>{{movie?.title}} ({{movie?.release_date | date:'yyyy'}})</h1>
+        <span class="meta-information">
+          {{movie?.release_date | date}}
+          <ul>
+             <li *ngFor="let item of movie.genres; index as i">
+                <ng-container *ngIf="i == 0; else loggedOut ">
+                  * {{item.name}}
+                </ng-container>
+                <ng-template #loggedOut>
+                   , {{item.name}}
+                </ng-template>
+             </li>
+          </ul>
+        </span>
+      </div>
+    </div>
+</div>
