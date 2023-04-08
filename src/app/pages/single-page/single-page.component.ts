@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {SingleMovieService} from "../services/movie-details/single-movie.service";
-import {ImagesService} from "../services/images/images.service";
+import {SingleMovieService} from "../../services/movie-details/single-movie.service";
+import {ImagesService} from "../../services/images/images.service";
 import {Subject, takeUntil} from "rxjs";
 
 @Component({

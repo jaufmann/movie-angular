@@ -1,0 +1,25 @@
+.cast-list {
+  overflow: scroll;
+
+  ul {
+    display: inline-flex;
+    gap: 10px;
+    list-style: none;
+
+    li {
+      .cast-member {
+        border-radius: 25px 25px 0 0;
+        width: 100%;
+      }
+
+      border: 1px solid grey;
+      border-radius: 25px;
+      width: 150px;
+      height: 250px;
+    }
+  }
+}
+
+.cast-member-name {
+  padding: 10px;
+}
