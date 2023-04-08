@@ -4,12 +4,6 @@
   "newProjectRoot": "projects",
   "projects": {
     "movie-angular-db": {
-      "i18n": {
-        "sourceLocale": "en-US",
-        "locales": {
-          "de-DE" : "src/locale/messages.de.xlf"
-        }
-      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +17,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": ["de-DE"],
             "outputPath": "dist/movie-angular-db",
             "index": "src/index.html",
             "main": "src/main.ts",

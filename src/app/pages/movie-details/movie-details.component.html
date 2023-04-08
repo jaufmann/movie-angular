@@ -11,7 +11,7 @@
         <span class="meta-information">
           {{movie?.release_date | date}}
           <ul>
-             <li *ngFor="let item of movie.genres; index as i">
+             <li *ngFor="let item of movie?.genres; index as i">
                 <ng-container *ngIf="i == 0; else loggedOut ">
                   * {{item.name}}
                 </ng-container>
@@ -24,12 +24,12 @@
       </div>
 
       <div>
-        <label i18n>Story</label>
+        <label>{{ 'movieOverview.story' | translate }}</label>
       </div>
     </div>
 </div>
 
-<label i18n>Actor</label>
+<label>{{ 'movieOverview.actor' | translate }}</label>
 <div>
   <app-cast/>
 </div>

@@ -4,11 +4,11 @@ import {ImagesService} from "../../services/images/images.service";
 import {Subject, takeUntil} from "rxjs";
 
 @Component({
-  selector: 'app-single-page',
-  templateUrl: './single-page.component.html',
-  styleUrls: ['./single-page.component.scss']
+  selector: 'app-movie-details',
+  templateUrl: './movie-details.component.html',
+  styleUrls: ['./movie-details.component.scss']
 })
-export class SinglePageComponent implements OnInit, OnDestroy {
+export class MovieDetailsComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   movie: any;
   images: any;
