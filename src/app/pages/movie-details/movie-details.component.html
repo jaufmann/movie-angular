@@ -9,7 +9,7 @@
         <span class="overview-card__details__meta-information">
           {{movie?.release_date | date}}
           <ul>
-             <li *ngFor="let item of movie?.genres; index as i">
+             <li *ngFor="let item of movie?.genres; index as i; trackBy: trackByFn">
                 <ng-container *ngIf="i == 0; else loggedOut ">
                   * {{item.name}}
                 </ng-container>
@@ -21,7 +21,7 @@
         </span>
       </div>
 
-      <div>
+      <div class="overview-card__story">
         <label>{{ 'movieOverview.story' | translate }}</label>
         {{movie?.overview}}
       </div>

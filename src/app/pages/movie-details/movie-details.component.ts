@@ -14,21 +14,16 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   movie: IMovie | undefined;
   images: any;
-  backdrop: any = "background-image: url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2/1sc39exU1GS3niZps9yJ3xTkBMf.jpg)";
+  backdrop: string = "background-image: url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2/1sc39exU1GS3niZps9yJ3xTkBMf.jpg)";
 
   //injections
   singlePageService: SingleMovieService = inject(SingleMovieService);
   imageService: ImagesService = inject(ImagesService);
   languageSwitchService: LanguageSwitchService = inject(LanguageSwitchService);
 
-
   ngOnInit(): void {
     this.initMovie();
     this.initImages();
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next(true);
   }
 
   initImages() {
@@ -42,7 +37,6 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   }
 
   initMovie(){
-
     this.languageSwitchService.observeLanguage()
       .pipe(switchMap(language =>
           this.singlePageService.getSingleMovie(502356, language)
@@ -50,5 +44,14 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.movie = data;
       });
+  }
+
+  trackByFn(index: number, item: any) {
+    return item.id;
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 }
