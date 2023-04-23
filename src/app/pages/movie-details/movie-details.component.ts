@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SingleMovieService} from "../../services/movie-details/single-movie.service";
 import {ImagesService} from "../../services/images/images.service";
 import {Subject, takeUntil} from "rxjs";
+import {IMovie} from "../../shared/interfaces/IMovie";
 
 @Component({
   selector: 'app-movie-details',
@@ -10,7 +11,7 @@ import {Subject, takeUntil} from "rxjs";
 })
 export class MovieDetailsComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
-  movie: any;
+  movie: IMovie | undefined;
   images: any;
   backdrop: any = "background-image: url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2/1sc39exU1GS3niZps9yJ3xTkBMf.jpg)";
 

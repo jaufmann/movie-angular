@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 export class CastService {
   private httpClient = inject(HttpClient)
 
-  getCast(movieId: number): Observable<any> {
+  getCast(movieId: number | undefined): Observable<any> {
     return this.httpClient
       .get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=e3f92efd2684291c83192e31a75b0571&language=en-US`);
   }

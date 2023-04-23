@@ -24,7 +24,33 @@
         list-style: none;
         gap: 5px;
       }
-
     }
   }
 }
+
+.content {
+  display: flex;
+
+  .middle {
+    background: red;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .actor {
+      background: blue
+    }
+
+    .content {
+      background: green;
+    }
+  }
+
+  .right {
+    width: 800px;
+    background: yellow;
+  }
+}
+
