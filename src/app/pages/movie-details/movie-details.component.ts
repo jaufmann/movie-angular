@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {SingleMovieService} from "../../services/movie-details/single-movie.service";
 import {ImagesService} from "../../services/images/images.service";
-import {Subject, takeUntil} from "rxjs";
+import {Subject, switchMap, takeUntil} from "rxjs";
 import {IMovie} from "../../shared/interfaces/IMovie";
+import {LanguageSwitchService} from "../../services/language-switch/language-switch.service";
 
 @Component({
   selector: 'app-movie-details',
@@ -15,7 +16,11 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   images: any;
   backdrop: any = "background-image: url(https://www.themoviedb.org/t/p/w300_and_h450_bestv2/1sc39exU1GS3niZps9yJ3xTkBMf.jpg)";
 
-  constructor(private singlePageService: SingleMovieService, private imageService: ImagesService) { }
+  //injections
+  singlePageService: SingleMovieService = inject(SingleMovieService);
+  imageService: ImagesService = inject(ImagesService);
+  languageSwitchService: LanguageSwitchService = inject(LanguageSwitchService);
+
 
   ngOnInit(): void {
     this.initMovie();
@@ -37,11 +42,13 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   }
 
   initMovie(){
-    this.singlePageService.getSingleMovie(502356)
-      .pipe(takeUntil(this.destroy$))
+
+    this.languageSwitchService.observeLanguage()
+      .pipe(switchMap(language =>
+          this.singlePageService.getSingleMovie(502356, language)
+      ))
       .subscribe((data) => {
-        console.log(data);
-          this.movie = data;
-    });
+        this.movie = data;
+      });
   }
 }

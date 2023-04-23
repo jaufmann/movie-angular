@@ -8,6 +8,7 @@ import { CastComponent } from './shared/components/cast/cast.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SocialMediaComponent } from './shared/components/social-media/social-media.component';
+import { HeaderComponent } from './components/header/header.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -18,7 +19,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     MovieDetailsComponent,
     CastComponent,
-    SocialMediaComponent
+    SocialMediaComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

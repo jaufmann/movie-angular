@@ -1,12 +1,12 @@
-<section class="card" style="{{this.backdrop}}">
-    <div class="picture">
+<section class="overview-card" style="{{this.backdrop}}">
+    <div class="overview-card__picture">
         <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/1sc39exU1GS3niZps9yJ3xTkBMf.jpg">
     </div>
 
-    <div class="details">
+    <div class="overview-card__details">
       <div>
         <h1>{{movie?.title}} ({{movie?.release_date | date:'yyyy'}})</h1>
-        <span class="meta-information">
+        <span class="overview-card__details__meta-information">
           {{movie?.release_date | date}}
           <ul>
              <li *ngFor="let item of movie?.genres; index as i">
@@ -23,6 +23,7 @@
 
       <div>
         <label>{{ 'movieOverview.story' | translate }}</label>
+        {{movie?.overview}}
       </div>
     </div>
 </section>
@@ -30,17 +31,14 @@
 <label>{{ 'movieOverview.actor' | translate }}</label>
 
 <section class="content">
-  <div class="middle">
-    <div class="actor">
-      <app-cast [movieId]="502356"/>
-    </div>
-    <div class="content">
-        unten
+  <div class="content__middle">
+    <div class="content__middle__actor">
+      <app-cast [movieId]="502356" />
     </div>
   </div>
 
-  <div class="right" style="background: yellow">
-    rechts
+  <div class="content__right">
+    <app-social-media />
   </div>
 </section>
 
